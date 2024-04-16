@@ -1,0 +1,16 @@
+name: Java 
+  
+on: push
+jobs:
+  build-java:
+    runs-on: ubuntu-latest
+    container: openjdk:latest
+    steps:
+      - name: Check Java version
+        run: java -version
+      - name: Check Maven version
+        run: mvn --version
+      - name: Compile Java App
+        run: javac HelloWorld.java
+      - name: Run Java App
+        run: java HelloWorld.java
