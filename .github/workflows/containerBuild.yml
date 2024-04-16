@@ -8,6 +8,10 @@ jobs:
     steps:
       - name: Check Java version
         run: java -version
+      - name: Install Maven
+        run: |
+          apt update
+          apt install -y maven
       - name: Check Maven version
         run: mvn --version
       - name: Compile Java App
