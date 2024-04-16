@@ -4,17 +4,19 @@ on: push
 jobs:
   build-java:
     runs-on: ubuntu-latest
-    container: openjdk:latest
+    container: maven:latest
     steps:
       - name: Check Java version
         run: java -version
-      - name: Install Maven
-        run: |
-          apt-get update
-          apt-get install -y maven
+
       - name: Check Maven version
         run: mvn --version
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       - name: Compile Java App
         run: javac HelloWorld.java
+
       - name: Run Java App
         run: java HelloWorld.java
